@@ -12,10 +12,12 @@ module.exports = {
   output: {
     path: __dirname + '/dist',
     filename: 'index_bundle.js',
+    publicPath: '/',
   },
   module: {
     loaders: [
       { test: /\.jsx$/, exclude: /node_modeles/, loader: 'babel-loader' },
+      { test: /\.(png|jpg|svg)$/, loader: 'file-loader?name=/img/[name].[ext]' },
     ],
   },
   plugins: [

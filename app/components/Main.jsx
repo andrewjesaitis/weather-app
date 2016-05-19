@@ -1,4 +1,5 @@
 var React = require('react');
+var styles = require('../styles/styles');
 
 function Navbar() {
   return (
@@ -22,9 +23,9 @@ var Main = React.createClass({
   propTypes: {
     children: React.PropTypes.element.isRequired,
   },
-  render() {
+  render: function() {
     return (
-      <div classNameName="main-container">
+      <div className="main-container" style={styles.bg}>
         <Navbar />
        {this.props.children}
       </div>
