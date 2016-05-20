@@ -9,9 +9,15 @@ var styles = {
     backgroundSize: 'cover',
   },
   verticalCenter: {
-    minHeight: '100vh', /* These two lines are counted as one :-)       */
+    minHeight: '90%',
     display: 'flex',
     alignItems: 'center',
+  },
+  loading: {
+    minHeight: '90%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 };
 

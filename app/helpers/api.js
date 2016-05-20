@@ -8,7 +8,7 @@ var CURRENT = '/weather';
 var FORECAST = '/forecast/daily';
 
 var api = {
-  getCurrentWeather(city) {
+  getCurrentWeather: function(city) {
     var currentUrl = URL.concat(APIVERSION, CURRENT);
     var config = {
       params: {
@@ -17,15 +17,15 @@ var api = {
         APPID: APIKEY,
       },
     };
-    axios.get(currentUrl, config)
+    return axios.get(currentUrl, config)
          .then(function (res) {
-           console.log(res);
+           return res.data;
          })
          .catch(function (err) {
            console.warn('Error in getCurrentWeather: ' + err);
          });
   },
-  getForecastWeather(city, numDays) {
+  getForecastWeather: function(city, numDays) {
     var forcastUrl = URL.concat(APIVERSION, FORECAST);
     var config = {
       params: {
@@ -35,9 +35,9 @@ var api = {
         APPID: APIKEY,
       },
     };
-    axios.get(forcastUrl, config)
+    return axios.get(forcastUrl, config)
        .then(function (res) {
-         console.log(res);
+         return res.data;
        })
        .catch(function (err) {
          console.warn('Error in getCurrentWeather: ' + err);

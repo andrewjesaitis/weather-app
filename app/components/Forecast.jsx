@@ -1,12 +1,28 @@
 var React = require('react');
+var PropTypes = React.PropTypes;
+var Loading = require('./Loading');
 
 
-function Forecast() {
+function puke(obj) {
+  return JSON.stringify(obj, null, 2);
+}
+
+function Forecast(props) {
+  if (props.isLoading === true) {
+    return (
+      <Loading />
+    );
+  }
+
   return (
     <div>
-      <h1> Look ma, a Forecast</h1>
+      <pre>{puke(props.forecast)}</pre>
     </div>
   );
 }
+
+Forecast.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+};
 
 module.exports = Forecast;
