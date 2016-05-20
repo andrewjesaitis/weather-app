@@ -1,6 +1,5 @@
 var React = require('react');
 var LocationWidget = require('../components/LocationWidget');
-var api = require('../helpers/api');
 
 var LocationWidgetContainer = React.createClass({
   contextTypes: {
@@ -16,7 +15,7 @@ var LocationWidgetContainer = React.createClass({
   },
   handleSubmitLocation(e) {
     e.preventDefault();
-    api.getCurrentWeather(this.state.location);
+    this.context.router.push(`/forecast/${this.state.location}`);
   },
   handleUpdateLocation(e) {
     this.setState({
