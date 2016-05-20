@@ -8,6 +8,11 @@ var styles = {
     width: '100%',
     backgroundSize: 'cover',
   },
+  verticalCenter: {
+    minHeight: '100vh', /* These two lines are counted as one :-)       */
+    display: 'flex',
+    alignItems: 'center',
+  },
 };
 
 

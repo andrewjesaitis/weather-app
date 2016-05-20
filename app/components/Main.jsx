@@ -1,5 +1,6 @@
 var React = require('react');
 var styles = require('../styles/styles');
+var LocationWidget = require('./LocationWidget');
 
 function Navbar() {
   return (
@@ -9,10 +10,7 @@ function Navbar() {
           <a className="navbar-brand" href="#">Brand</a>
         </div>
         <form className="navbar-form navbar-right" role="search">
-          <div className="form-group">
-            <input type="text" className="form-control" placeholder="Location" />
-          </div>
-          <button type="submit" className="btn btn-default">Submit</button>
+          <LocationWidget />
         </form>
       </div>
     </nav>
