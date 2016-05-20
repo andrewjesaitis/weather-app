@@ -1,27 +1,12 @@
 var React = require('react');
 var styles = require('../styles/styles');
-var LocationWidget = require('./LocationWidget');
-
-function Navbar() {
-  return (
-    <nav className="navbar navbar-default">
-      <div className="container-fluid">
-        <div className="navbar-header">
-          <a className="navbar-brand" href="#">Brand</a>
-        </div>
-        <form className="navbar-form navbar-right" role="search">
-          <LocationWidget />
-        </form>
-      </div>
-    </nav>
-  );
-}
+var LocationWidgetContainer = require('../containers/LocationWidgetContainer');
 
 var Main = React.createClass({
   propTypes: {
     children: React.PropTypes.element.isRequired,
   },
-  render: function() {
+  render() {
     return (
       <div className="main-container" style={styles.bg}>
         <Navbar />
@@ -30,6 +15,21 @@ var Main = React.createClass({
     );
   },
 });
+
+function Navbar() {
+  return (
+    <nav className="navbar navbar-default">
+      <div className="container-fluid">
+        <div className="navbar-header">
+          <a className="navbar-brand" href="#">weather-app</a>
+        </div>
+        <div className="navbar-form navbar-right" role="search">
+          <LocationWidgetContainer />
+        </div>
+      </div>
+    </nav>
+  );
+}
 
 module.exports = Main;
 
