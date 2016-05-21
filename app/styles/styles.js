@@ -20,6 +20,9 @@ var styles = {
     alignItems: 'center',
     justifyContent: 'center',
   },
+  detailLink: {
+    color: 'inherit',
+  },
 };
 
 
