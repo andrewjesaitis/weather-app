@@ -8,9 +8,11 @@ var Main = React.createClass({
   },
   render() {
     return (
-      <div className="main-container" style={styles.bg}>
+      <div className="main-container" style={styles.mainComponent}>
         <Navbar />
-        {this.props.children}
+        <div style={styles.vcenter}>
+          {this.props.children}
+        </div>
       </div>
     );
   },

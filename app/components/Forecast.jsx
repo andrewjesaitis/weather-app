@@ -12,12 +12,10 @@ function Forecast(props) {
   }
 
   return (
-    <div style={styles.verticalCenter}>
-      <div className="clearfix row">
-        {props.forecast.list.map(function (day, index) {
-          return <ForecastDayContainer index={index} day={day} key={day.dt} />;
-        })}
-      </div>
+    <div className="row">
+      {props.forecast.list.map(function (day, index) {
+        return <ForecastDayContainer index={index} day={day} key={day.dt} />;
+       })}
     </div>
   );
 }
