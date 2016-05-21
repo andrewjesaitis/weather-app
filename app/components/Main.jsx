@@ -10,7 +10,7 @@ var Main = React.createClass({
     return (
       <div className="main-container" style={styles.bg}>
         <Navbar />
-       {this.props.children}
+        {this.props.children}
       </div>
     );
   },
@@ -21,7 +21,7 @@ function Navbar() {
     <nav className="navbar navbar-default">
       <div className="container-fluid">
         <div className="navbar-header">
-          <a className="navbar-brand" href="#">weather-app</a>
+          <a className="navbar-brand" href="#">weather-app <i className="wi wi-day-lightning"></i></a>
         </div>
         <div className="navbar-form navbar-right" role="search">
           <LocationWidgetContainer />

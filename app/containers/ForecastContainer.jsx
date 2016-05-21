@@ -1,29 +1,34 @@
 var React = require('react');
+var PropTypes = React.PropTypes;
 var Forecast = require('../components/Forecast');
 var api = require('../helpers/api');
 
-var LocationWidgetContainer = React.createClass({
+var ForecastContainer = React.createClass({
+  propTypes: {
+    routeParams: PropTypes.object.isRequired,
+  },
   contextTypes: {
     router: React.PropTypes.object.isRequired,
   },
   getInitialState() {
     return {
       isLoading: true,
-      forecast: '',
+      forecast: {},
     };
   },
   componentDidMount() {
-    var location =  this.props.routeParams.location;
-    api.getForecastWeather(location)
+    var location = this.props.routeParams.location;
+    api.getForecastWeather(location, 5)
        .then(function(data) {
          this.setState({
            forecast: data,
          });
-         this.state.isLoading = false;
+         this.setState({
+           isLoading: false,
+         });
        }.bind(this));
   },
   render() {
-    console.log(this.state);
     return (
       <Forecast
         isLoading={this.state.isLoading}
@@ -33,4 +38,4 @@ var LocationWidgetContainer = React.createClass({
   },
 });
 
-module.exports = LocationWidgetContainer;
+module.exports = ForecastContainer;

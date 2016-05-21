@@ -9,9 +9,10 @@ var styles = {
     backgroundSize: 'cover',
   },
   verticalCenter: {
-    minHeight: '90%',
+    minHeight: '85%',
     display: 'flex',
-    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
   loading: {
     minHeight: '90%',
