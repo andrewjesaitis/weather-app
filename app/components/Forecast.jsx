@@ -12,17 +12,45 @@ function Forecast(props) {
   }
 
   return (
-    <div className="row">
-      {props.forecast.list.map(function (day, index) {
-        return <ForecastDayContainer index={index} day={day} key={day.dt} />;
-       })}
+    <div>
+      <div className="row">
+        <div className="col-sm-4 col-sm-offset-4 text-center">
+          <h2>Current Conditions</h2>
+        </div>
+      </div>
+      <br />
+      <div className="row" style={styles.currentIcon}>
+        <ForecastDayContainer
+          location={props.location}
+          day={props.current} />
+      </div>
+      <br />
+      <br />
+      <div className="row">
+        <div className="col-sm-4 col-sm-offset-4 text-center">
+          <h3>Five Day Forecast</h3>
+        </div>
+      </div>
+      <br />
+      <div className="row">
+        {props.forecast.map(function (day, index) {
+          return (
+            <ForecastDayContainer
+              location={props.location}
+              index={index}
+              day={day}
+              key={day.dt}
+            />
+          )
+         })}
+      </div>
     </div>
   );
 }
 
 Forecast.propTypes = {
   isLoading: PropTypes.bool.isRequired,
-  forecast: PropTypes.object.isRequired,
+  forecast: PropTypes.array.isRequired,
 };
 
 module.exports = Forecast;

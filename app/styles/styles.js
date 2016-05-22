@@ -19,6 +19,9 @@ var styles = {
   detailLink: {
     color: 'inherit',
   },
+  currentIcon: {
+    fontSize: '2em',
+  },
 };
 
 

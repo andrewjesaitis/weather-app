@@ -1,7 +1,6 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
 var Detail = require('../components/Detail');
-var api = require('../helpers/api');
 var utils = require('../helpers/utils');
 
 function puke(obj) {
@@ -15,42 +14,31 @@ var DetailContainer = React.createClass({
   },
   getInitialState() {
     return {
-      isLoading: true,
+      isLoading: false,
       weatherCode: null,
-      conditions: {},
+      day: {},
+      title: '',
     };
   },
-  componentDidMount() {
-    var location = this.props.routeParams.location;
-    api.getCurrentWeather(location)
-       .then(function(data) {
-         this.setState({
-           weatherCode: data.weather[0].id,
-           weatherDescription: data.weather[0].description,
-           temperature: data.main.temp,
-           pressure: data.main.pressure,
-           humidity: data.main.humidity,
-           sunrise: utils.formatUTCTime(data.sys.sunrise),
-           sunset: utils.formatUTCTime(data.sys.sunset),
-           wind: data.wind,
-           isLoading: false,
-         });
-       }.bind(this));
+  componentWillMount() {
+    var title;
+    var index = this.props.location.state.index;
+    if (index >= 0) {
+      title = `Forcast for ${utils.formatDateString(this.props.location.state.day.dt)}`;
+    } else {
+      title = 'Current Conditions';
+    }
+    this.setState({title});
   },
   render() {
+    console.log(this.props.location)
     return (
       <div>
       <Detail
         isLoading={this.state.isLoading}
-        iconClass={utils.getWeatherIconClass(this.state.weatherCode)}
-        weatherDescription={this.state.weatherDescription}
-        temperature={this.state.temperature}
-        pressure={this.state.pressure}
-        weatherDescription={this.state.weatherDescription}
-        humidity={this.state.humidity}
-        sunrise={this.state.sunrise}
-        sunset={this.state.sunset}
-        wind={this.state.wind}
+        title={this.state.title}
+        iconClass={utils.getWeatherIconClass(this.props.location.state.day.weatherCode)}
+        day={this.props.location.state.day}
       />
       </div>
     );
@@ -58,4 +46,6 @@ var DetailContainer = React.createClass({
 });
 
 module.exports = DetailContainer;
+
+
 

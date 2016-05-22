@@ -73,11 +73,9 @@ const months = ['January', 'February', 'March', 'April', 'May', 'June',
 
 
 var utils = {
-  getDayString: function(day) {
-    return days[day];
-  },
-  getMonthString: function(month) {
-    return months[month];
+  formatDateString: function(dt) {
+    var d = new Date(dt*1000);
+    return `${days[d.getDay()]} ${months[d.getMonth()]} ${d.getDate()}`;
   },
   getWeatherIconString: function(code) {
     var iconStr;
@@ -97,6 +95,44 @@ var utils = {
     var d = new Date(s*1000);
     return d.toLocaleTimeString('en-US');
   },
+  normalizeCurrentData: function(raw) {
+    var processed = {
+      dt: raw.dt,
+      weatherCode: raw.weather[0].id,
+      weatherDescription: raw.weather[0].description,
+      temperature: [raw.main.temp],
+      humidity: raw.main.humidity,
+      pressure: raw.main.pressure,
+      wind: raw.main.wind,
+      sunrise: utils.formatUTCTime(raw.sys.sunrise),
+      sunset: utils.formatUTCTime(raw.sys.sunset),
+    };
+    return processed;
+  },
+  normalizeForecastData: function(raw) {
+    console.log(raw);
+    var processed = raw.list.map(function(item) {
+      return {
+        dt: item.dt,
+        weatherCode: item.weather[0].id,
+        weatherDescription: item.weather[0].description,
+        temperature: [item.temp.min, item.temp.max],
+        humidity: item.humidity,
+        pressure: item.pressure,
+        wind: item.wind,
+      };
+    });
+    return processed;
+  },
 };
 
 module.exports = utils;
+
+
+
+
+
+
+
+
+

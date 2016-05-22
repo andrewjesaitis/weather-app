@@ -2,6 +2,12 @@ var React = require('react');
 var PropTypes = React.PropTypes;
 var Forecast = require('../components/Forecast');
 var api = require('../helpers/api');
+var utils = require('../helpers/utils');
+var axios = require('axios');
+
+function puke(obj) {
+  return JSON.stringify(obj, null, 2);
+}
 
 var ForecastContainer = React.createClass({
   propTypes: {
@@ -13,27 +19,31 @@ var ForecastContainer = React.createClass({
   getInitialState() {
     return {
       isLoading: true,
-      forecast: {},
+      forecast: [],
+      current: {},
     };
   },
   componentDidMount() {
     var location = this.props.routeParams.location;
-    api.getForecastWeather(location, 5)
-       .then(function(data) {
+    axios.all([api.getCurrentWeather(location),
+               api.getForecastWeather(location, 5)])
+       .then(axios.spread(function(currentData, forecastData) {
          this.setState({
-           forecast: data,
-         });
-         this.setState({
+           current: utils.normalizeCurrentData(currentData),
+           forecast: utils.normalizeForecastData(forecastData),
            isLoading: false,
-         });
-       }.bind(this));
+         })}.bind(this)));
   },
   render() {
     return (
-      <Forecast
-        isLoading={this.state.isLoading}
-        forecast={this.state.forecast}
-      />
+      <div>
+        <Forecast
+          isLoading={this.state.isLoading}
+          current={this.state.current}
+          forecast={this.state.forecast}
+          location={this.props.routeParams.location}
+        />
+      </div>
     );
   },
 });

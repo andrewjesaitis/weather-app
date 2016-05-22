@@ -5,11 +5,9 @@ var styles = require('../styles/styles');
 
 function ForecastDay(props) {
   return (
-    <div className={props.containerClass}>
-      <Link to="/detail/Bozeman,MT" style={styles.detailLink}>
+    <div className={props.containerClass} onClick={props.handleClick}>
         <div><i className={props.iconClass}></i></div>
         <h4>{props.dateString}</h4>
-      </Link>
     </div>
   );
 }

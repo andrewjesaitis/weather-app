@@ -14,6 +14,7 @@ var api = {
       params: {
         q: city,
         type: 'accurate',
+        units: 'imperial',
         APPID: APIKEY,
       },
     };
@@ -32,6 +33,7 @@ var api = {
         q: city,
         cnt: numDays,
         type: 'accurate',
+        units: 'imperial',
         APPID: APIKEY,
       },
     };
