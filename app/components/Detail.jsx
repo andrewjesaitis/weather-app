@@ -12,7 +12,7 @@ function Temperatue(props) {
         </div>
         <div className="col-sm-2">
           {props.temperature.length === 1 ?
-           props.temperature :
+           `${props.temperature} \u{2109}`:
            `${props.temperature[0]}  \u{2109} / ${props.temperature[1]}  \u{2109}`}
         </div>
       </div>
@@ -52,6 +52,11 @@ function Detail(props) {
 
   return (
     <div>
+      <div className="row">
+        <div className="col-sm-1 col-sm-offset-7">
+          <button type="button" className="close" onClick={props.handleClose} aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+      </div>
       <div className="row">
         <div className="col-sm-12 text-center">
           <h2>{props.title}</h2>

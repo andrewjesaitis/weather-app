@@ -24,15 +24,16 @@ var ForecastContainer = React.createClass({
     };
   },
   componentDidMount() {
-    var location = this.props.routeParams.location;
-    axios.all([api.getCurrentWeather(location),
-               api.getForecastWeather(location, 5)])
+    var city = this.props.routeParams.city;
+    axios.all([api.getCurrentWeather(city),
+               api.getForecastWeather(city, 5)])
        .then(axios.spread(function(currentData, forecastData) {
          this.setState({
            current: utils.normalizeCurrentData(currentData),
            forecast: utils.normalizeForecastData(forecastData),
            isLoading: false,
-         })}.bind(this)));
+         });
+       }.bind(this)));
   },
   render() {
     return (
@@ -41,7 +42,7 @@ var ForecastContainer = React.createClass({
           isLoading={this.state.isLoading}
           current={this.state.current}
           forecast={this.state.forecast}
-          location={this.props.routeParams.location}
+          city={this.props.routeParams.city}
         />
       </div>
     );

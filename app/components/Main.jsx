@@ -10,7 +10,7 @@ var Main = React.createClass({
     return (
       <div className="main-container" style={styles.mainComponent}>
         <Navbar />
-        <div style={styles.vcenter}>
+        <div stylbe={styles.vcenter}>
           {this.props.children}
         </div>
       </div>

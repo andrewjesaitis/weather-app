@@ -21,7 +21,7 @@ function Forecast(props) {
       <br />
       <div className="row" style={styles.currentIcon}>
         <ForecastDayContainer
-          location={props.location}
+          city={props.city}
           day={props.current} />
       </div>
       <br />
@@ -36,7 +36,7 @@ function Forecast(props) {
         {props.forecast.map(function (day, index) {
           return (
             <ForecastDayContainer
-              location={props.location}
+              city={props.city}
               index={index}
               day={day}
               key={day.dt}

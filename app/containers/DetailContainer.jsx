@@ -30,12 +30,17 @@ var DetailContainer = React.createClass({
     }
     this.setState({title});
   },
+  onClose: function(e) {
+    e.preventDefault();
+    this.context.router.push('/forecast/' + this.props.location.state.city);
+  },
   render() {
     console.log(this.props.location)
     return (
       <div>
       <Detail
         isLoading={this.state.isLoading}
+        handleClose={this.onClose}
         title={this.state.title}
         iconClass={utils.getWeatherIconClass(this.props.location.state.day.weatherCode)}
         day={this.props.location.state.day}

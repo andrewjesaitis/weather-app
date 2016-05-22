@@ -39,9 +39,10 @@ var ForecastDayContainer = React.createClass({
   },
   onClick: function(e) {
     this.context.router.push({
-      pathname: '/detail/' + this.props.location,
+      pathname: '/detail/' + this.props.city,
       state: {
         day: this.props.day,
+        city: this.props.city,
         index: this.props.index,
       },
     });
@@ -50,6 +51,7 @@ var ForecastDayContainer = React.createClass({
     return (
       <ForecastDay
         handleClick={this.onClick}
+        city={this.props.city}
         containerClass={this.state.containerClass}
         iconClass={this.state.iconClass}
         dateString={this.state.dateString}
