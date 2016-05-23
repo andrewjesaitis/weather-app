@@ -28,13 +28,13 @@ var ForecastDayContainer = React.createClass({
       containerClass += 'col-xs-12';
     }
 
-    const dateString = this.props.index >= 0 ?
+    const caption = this.props.index >= 0 ?
                        `${utils.formatDateString(this.props.day.dt)}` :
                        `${this.props.day.temperature} \u{2109}`;
     this.setState({
       containerClass: containerClass,
       iconClass: utils.getWeatherIconClass(this.props.day.weatherCode),
-      dateString: dateString,
+      caption: caption,
     });
   },
   onClick() {
@@ -53,7 +53,7 @@ var ForecastDayContainer = React.createClass({
         handleClick={this.onClick}
         containerClass={this.state.containerClass}
         iconClass={this.state.iconClass}
-        dateString={this.state.dateString}
+        caption={this.state.caption}
       />
     );
   },
