@@ -28,14 +28,13 @@ var DetailContainer = React.createClass({
     } else {
       title = 'Current Conditions';
     }
-    this.setState({title});
+    this.setState({ title });
   },
   onClose: function(e) {
     e.preventDefault();
     this.context.router.push('/forecast/' + this.props.location.state.city);
   },
   render() {
-    console.log(this.props.location)
     return (
       <div>
       <Detail

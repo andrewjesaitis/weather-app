@@ -23,8 +23,14 @@ var ForecastContainer = React.createClass({
       current: {},
     };
   },
-  componentDidMount() {
-    var city = this.props.routeParams.city;
+  componentWillReceiveProps: function(newProps) {
+    this.setState({isLoading: true});
+    this.makeRequest(newProps.routeParams.city);
+  },
+  componentDidMount: function() {
+    this.makeRequest(this.props.routeParams.city);
+  },
+  makeRequest: function(city) {
     axios.all([api.getCurrentWeather(city),
                api.getForecastWeather(city, 5)])
        .then(axios.spread(function(currentData, forecastData) {
