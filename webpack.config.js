@@ -21,7 +21,7 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.jsx$/, loader: 'babel-loader', include: PATHS.app },
+      { test: /\.(jsx|js)$/, loader: 'babel-loader', include: PATHS.app },
       { test: /\.(png|jpg|svg)$/,
         loader: 'file-loader?name=/img/[name].[ext]',
         include: PATHS.app,
