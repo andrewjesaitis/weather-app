@@ -5,19 +5,27 @@ var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
   inject: 'body',
 });
 
+const path = require('path');
+const PATHS = {
+  app: path.join(__dirname, 'app'),
+  dist: path.join(__dirname, 'dist'),
+};
+
 module.exports = {
   entry: [
     './app/index.jsx',
   ],
   output: {
-    path: __dirname + '/dist',
+    path: PATHS.dist,
     filename: 'index_bundle.js',
-    publicPath: '/',
   },
   module: {
     loaders: [
-      { test: /\.jsx$/, exclude: /node_modeles/, loader: 'babel-loader' },
-      { test: /\.(png|jpg|svg)$/, loader: 'file-loader?name=/img/[name].[ext]' },
+      { test: /\.jsx$/, loader: 'babel-loader', include: PATHS.app },
+      { test: /\.(png|jpg|svg)$/,
+        loader: 'file-loader?name=/img/[name].[ext]',
+        include: PATHS.app,
+      },
     ],
   },
   plugins: [
