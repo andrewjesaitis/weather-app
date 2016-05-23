@@ -5,7 +5,7 @@ var styles = require('../styles/styles');
 function Home() {
   return (
     <div className="row">
-      <div className="col-sm-6 col-sm-offset-3 text-center">
+      <div className="col-xs-12 text-center">
         <h2>Enter a city</h2>
         <LocationWidgetContainer />
       </div>

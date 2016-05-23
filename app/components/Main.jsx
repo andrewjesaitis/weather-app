@@ -29,7 +29,7 @@ function Navbar() {
           </button>
           <a className="navbar-brand" href="/">weather-app <i className="wi wi-day-lightning"></i></a>
         </div>
-        <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div className="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
           <LocationWidgetContainer />
         </div>
       </div>

@@ -3,7 +3,7 @@ var PropTypes = React.PropTypes;
 
 function LocationWidget(props) {
   return (
-    <form className=" navbar-form navbar-right" onSubmit={props.onSubmitLocation} role="search">
+    <form className="navbar-form" onSubmit={props.onSubmitLocation} role="search">
       <div className="form-group">
         <input
           type="text"

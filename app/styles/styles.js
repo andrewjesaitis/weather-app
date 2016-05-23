@@ -4,6 +4,7 @@ var styles = {
   mainComponent: {
     backgroundImage: String.prototype.concat("url('.", bgImg, "')"),
     backgroundRepeat: 'repeat',
+    minHeight: '100%',
     position: 'relative',
   },
   vcenter: {

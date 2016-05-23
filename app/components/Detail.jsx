@@ -51,13 +51,11 @@ function Detail(props) {
   return (
     <div>
       <div className="row">
-        <div className="col-sm-1 col-sm-offset-7">
-          <button type="button" className="close" onClick={props.handleClose} aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-sm-12 text-center">
+        <div className="col-xs-4 col-xs-offset-4 text-center">
           <h2>{props.title}</h2>
+        </div>
+        <div className="col-xs-1">
+          <button type="button" className="close" onClick={props.handleClose} aria-label="Close"><span style={styles.currentIcon} aria-hidden="true">&times;</span></button>
         </div>
       </div>
       <br />
