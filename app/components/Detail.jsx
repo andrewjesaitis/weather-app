@@ -2,20 +2,49 @@ var React = require('react');
 var PropTypes = React.PropTypes;
 var Loading = require('./Loading');
 var styles = require('../styles/styles');
-var utils = require('../helpers/utils');
 
-function Temperatue(props) {
+function Temperature(props) {
   return (
     <div>
       <dt><i className="wi wi-thermometer"></i> Temperatue</dt>
       <dd>
         {props.temperature.length === 1 ?
-         `${props.temperature} \u{2109}`:
-         `${props.temperature[0]}  \u{2109} / ${props.temperature[1]}  \u{2109}`}
+         `${props.temperature} \u{2109}` :
+         `Low: ${props.temperature[0]}  \u{2109} / High: ${props.temperature[1]}  \u{2109}`}
       </dd>
     </div>
   );
 }
+
+Temperature.propTypes = {
+  temperature: PropTypes.number.isRequired,
+};
+
+function Pressure(props) {
+  return (
+    <div>
+      <dt> <i className="wi wi-barometer"></i> Pressure</dt>
+      <dd>{props.pressure} mb</dd>
+    </div>
+  );
+}
+
+Pressure.propTypes = {
+  pressure: PropTypes.number.isRequired,
+};
+
+function Humidity(props) {
+  return (
+    <div>
+      <dt><i className="wi wi-humidity"></i> Humidity</dt>
+      <dd>{props.humidity}%</dd>
+    </div>
+  );
+}
+
+Humidity.propTypes = {
+  humidity: PropTypes.number.isRequired,
+};
 
 function Sunrise(props) {
   if (props.time) {
@@ -29,6 +58,10 @@ function Sunrise(props) {
   return null;
 }
 
+Sunrise.propTypes = {
+  time: PropTypes.string,
+};
+
 function Sunset(props) {
   if (props.time) {
     return (
@@ -40,6 +73,10 @@ function Sunset(props) {
   }
   return null;
 }
+
+Sunset.propTypes = {
+  time: PropTypes.string,
+};
 
 function Detail(props) {
   if (props.isLoading === true) {
@@ -55,7 +92,9 @@ function Detail(props) {
           <h2>{props.title}</h2>
         </div>
         <div className="col-xs-1">
-          <button type="button" className="close" onClick={props.handleClose} aria-label="Close"><span style={styles.currentIcon} aria-hidden="true">&times;</span></button>
+          <button type="button" className="close" onClick={props.handleClose} aria-label="Close">
+            <span style={styles.currentIcon} aria-hidden="true">&times;</span>
+          </button>
         </div>
       </div>
       <br />
@@ -71,15 +110,13 @@ function Detail(props) {
         </div>
       </div>
       <div style={styles.hcenter}>
-      <dl className="dl-horizontal">
-        <Temperatue temperature={props.day.temperature} />
-        <dt> <i className="wi wi-barometer"></i> Pressure</dt>
-        <dd>{props.day.pressure} mb</dd>
-        <dt><i className="wi wi-humidity"></i> Humidity</dt>
-        <dd>{props.day.humidity}%</dd>
-        <Sunrise time={props.day.sunrise || 0} />
-        <Sunset time={props.day.sunset || 0} />
-      </dl>
+        <dl className="dl-horizontal">
+          <Temperature temperature={props.day.temperature} />
+          <Pressure pressure={props.day.pressure} />
+          <Humidity humidity={props.day.humidity} />
+          <Sunrise time={props.day.sunrise || 0} />
+          <Sunset time={props.day.sunset || 0} />
+        </dl>
       </div>
     </div>
   );
@@ -88,6 +125,9 @@ function Detail(props) {
 Detail.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   iconClass: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  handleClose: PropTypes.func.isRequired,
+  day: PropTypes.object.isRequired,
 };
 
 module.exports = Detail;

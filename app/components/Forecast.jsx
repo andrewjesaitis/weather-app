@@ -18,10 +18,12 @@ function Forecast(props) {
           <h2>Current Conditions</h2>
         </div>
       </div>
+      <br />
       <div className="row" style={styles.currentIcon}>
         <ForecastDayContainer
           city={props.city}
-          day={props.current} />
+          day={props.current}
+        />
       </div>
       <br />
       <div className="row">
@@ -39,8 +41,8 @@ function Forecast(props) {
               day={day}
               key={day.dt}
             />
-          )
-         })}
+          );
+        })}
       </div>
     </div>
   );
@@ -49,6 +51,8 @@ function Forecast(props) {
 Forecast.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   forecast: PropTypes.array.isRequired,
+  current: PropTypes.object.isRequired,
+  city: PropTypes.string.isRequired,
 };
 
 module.exports = Forecast;

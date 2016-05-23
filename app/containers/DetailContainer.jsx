@@ -3,12 +3,10 @@ var PropTypes = React.PropTypes;
 var Detail = require('../components/Detail');
 var utils = require('../helpers/utils');
 
-function puke(obj) {
-  return JSON.stringify(obj, null, 2);
-}
-
 var DetailContainer = React.createClass({
-  propTypes: {},
+  propTypes: {
+    location: PropTypes.object.isRequired,
+  },
   contextTypes: {
     router: React.PropTypes.object.isRequired,
   },
@@ -30,26 +28,23 @@ var DetailContainer = React.createClass({
     }
     this.setState({ title });
   },
-  onClose: function(e) {
+  onClose(e) {
     e.preventDefault();
-    this.context.router.push('/forecast/' + this.props.location.state.city);
+    this.context.router.push(`/forecast/${this.props.location.state.city}`);
   },
   render() {
     return (
       <div>
-      <Detail
-        isLoading={this.state.isLoading}
-        handleClose={this.onClose}
-        title={this.state.title}
-        iconClass={utils.getWeatherIconClass(this.props.location.state.day.weatherCode)}
-        day={this.props.location.state.day}
-      />
+        <Detail
+          isLoading={this.state.isLoading}
+          handleClose={this.onClose}
+          title={this.state.title}
+          iconClass={utils.getWeatherIconClass(this.props.location.state.day.weatherCode)}
+          day={this.props.location.state.day}
+        />
       </div>
     );
   },
 });
 
 module.exports = DetailContainer;
-
-
-

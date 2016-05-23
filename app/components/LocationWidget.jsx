@@ -10,14 +10,15 @@ function LocationWidget(props) {
           className="form-control"
           placeholder="Location"
           value={props.location}
-          onChange={props.onUpdateLocation} />
+          onChange={props.onUpdateLocation}
+        />
       </div>
       <button type="submit" className="btn btn-default">Submit</button>
     </form>
   );
 }
 
-LocationWidget.PropTypes = {
+LocationWidget.propTypes = {
   location: PropTypes.string.isRequired,
   onUpdateLocation: PropTypes.func.isRequired,
   onSubmitLocation: PropTypes.func.isRequired,

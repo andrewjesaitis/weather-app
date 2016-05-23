@@ -1,5 +1,4 @@
 var React = require('react');
-var styles = require('../styles/styles');
 
 function Loading() {
   return (

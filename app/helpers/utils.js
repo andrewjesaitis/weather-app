@@ -1,4 +1,3 @@
-
 const weatherCodes = {
   200: 'wi-day-thunderstorm',
   201: 'wi-thunderstorm',
@@ -67,17 +66,18 @@ const weatherCodes = {
 
 const days = ['Sunday', 'Monday', 'Tuesday',
             'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
 const months = ['January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December',
 ];
 
 
 var utils = {
-  formatDateString: function(dt) {
-    var d = new Date(dt*1000);
+  formatDateString(dt) {
+    var d = new Date(dt * 1000);
     return `${days[d.getDay()]} ${months[d.getMonth()]} ${d.getDate()}`;
   },
-  getWeatherIconString: function(code) {
+  getWeatherIconString(code) {
     var iconStr;
     if (weatherCodes.hasOwnProperty(code)) {
       iconStr = weatherCodes[code];
@@ -86,16 +86,16 @@ var utils = {
     }
     return iconStr;
   },
-  getWeatherIconClass: function(code) {
+  getWeatherIconClass(code) {
     var iconClass = 'wi fa-5x ';
     iconClass += this.getWeatherIconString(code);
     return iconClass;
   },
-  formatUTCTime: function(s) {
-    var d = new Date(s*1000);
+  formatUTCTime(s) {
+    var d = new Date(s * 1000);
     return d.toLocaleTimeString('en-US');
   },
-  normalizeCurrentData: function(raw) {
+  normalizeCurrentData(raw) {
     var processed = {
       dt: raw.dt,
       weatherCode: raw.weather[0].id,
@@ -109,8 +109,7 @@ var utils = {
     };
     return processed;
   },
-  normalizeForecastData: function(raw) {
-    console.log(raw);
+  normalizeForecastData(raw) {
     var processed = raw.list.map(function(item) {
       return {
         dt: item.dt,
@@ -127,12 +126,3 @@ var utils = {
 };
 
 module.exports = utils;
-
-
-
-
-
-
-
-
-

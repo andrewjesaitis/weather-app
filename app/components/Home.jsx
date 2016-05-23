@@ -1,6 +1,5 @@
 var React = require('react');
 var LocationWidgetContainer = require('../containers/LocationWidgetContainer');
-var styles = require('../styles/styles');
 
 function Home() {
   return (

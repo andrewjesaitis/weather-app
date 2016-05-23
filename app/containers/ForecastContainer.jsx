@@ -5,10 +5,6 @@ var api = require('../helpers/api');
 var utils = require('../helpers/utils');
 var axios = require('axios');
 
-function puke(obj) {
-  return JSON.stringify(obj, null, 2);
-}
-
 var ForecastContainer = React.createClass({
   propTypes: {
     routeParams: PropTypes.object.isRequired,
@@ -23,17 +19,17 @@ var ForecastContainer = React.createClass({
       current: {},
     };
   },
-  componentWillReceiveProps: function(newProps) {
-    this.setState({isLoading: true});
-    this.makeRequest(newProps.routeParams.city);
-  },
-  componentDidMount: function() {
+  componentDidMount() {
     this.makeRequest(this.props.routeParams.city);
   },
-  makeRequest: function(city) {
+  componentWillReceiveProps(newProps) {
+    this.setState({ isLoading: true });
+    this.makeRequest(newProps.routeParams.city);
+  },
+  makeRequest(city) {
     axios.all([api.getCurrentWeather(city),
                api.getForecastWeather(city, 5)])
-       .then(axios.spread(function(currentData, forecastData) {
+       .then(axios.spread(function (currentData, forecastData) {
          this.setState({
            current: utils.normalizeCurrentData(currentData),
            forecast: utils.normalizeForecastData(forecastData),
