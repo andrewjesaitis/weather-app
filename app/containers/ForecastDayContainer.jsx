@@ -21,11 +21,11 @@ var ForecastDayContainer = React.createClass({
   componentWillMount() {
     var containerClass;
     if (this.props.index === 0) {
-      containerClass = 'col-sm-offset-1 col-sm-2 text-center';
+      containerClass = 'col-sm-2 col-xs-6 col-xs-offset-0 col-sm-offset-1 text-center';
     } else if (this.props.index > 0) {
-      containerClass = 'col-sm-2 teDxt-center';
+      containerClass = 'col-sm-2 col-xs-6 text-center';
     } else { // no index
-      containerClass = 'col-sm-2 col-sm-offset-5 text-center';
+      containerClass = 'col-xs-12 text-center';
     }
 
     const dateString = this.props.index >= 0 ? 
@@ -51,7 +51,6 @@ var ForecastDayContainer = React.createClass({
     return (
       <ForecastDay
         handleClick={this.onClick}
-        city={this.props.city}
         containerClass={this.state.containerClass}
         iconClass={this.state.iconClass}
         dateString={this.state.dateString}

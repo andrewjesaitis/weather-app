@@ -1,12 +1,9 @@
-var bgImg = require('../images/background.svg');
+var bgImg = require('../images/gplaypattern.png');
 
 var styles = {
   mainComponent: {
     backgroundImage: String.prototype.concat("url('.", bgImg, "')"),
-    minHeight: '100%',
-    height: '100%',
-    width: '100%',
-    backgroundSize: 'cover',
+    backgroundRepeat: 'repeat',
     position: 'relative',
   },
   vcenter: {
@@ -21,6 +18,14 @@ var styles = {
   },
   currentIcon: {
     fontSize: '2em',
+  },
+  forcastDay: {
+    marginTop: '10px',
+    marginBottom: '10px',
+  },
+  hcenter: {
+    display: 'flex',
+    justifyContent: 'center',
   },
 };
 

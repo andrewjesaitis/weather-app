@@ -18,13 +18,11 @@ function Forecast(props) {
           <h2>Current Conditions</h2>
         </div>
       </div>
-      <br />
       <div className="row" style={styles.currentIcon}>
         <ForecastDayContainer
           city={props.city}
           day={props.current} />
       </div>
-      <br />
       <br />
       <div className="row">
         <div className="col-sm-4 col-sm-offset-4 text-center">

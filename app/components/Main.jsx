@@ -10,9 +10,7 @@ var Main = React.createClass({
     return (
       <div className="main-container" style={styles.mainComponent}>
         <Navbar />
-        <div style={styles.vcenter}>
-          {this.props.children}
-        </div>
+        {this.props.children}
       </div>
     );
   },
@@ -23,9 +21,15 @@ function Navbar() {
     <nav className="navbar navbar-default">
       <div className="container-fluid">
         <div className="navbar-header">
-          <a className="navbar-brand" href="#">weather-app <i className="wi wi-day-lightning"></i></a>
+          <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span className="sr-only">Toggle navigation</span>
+            <span className="icon-bar"></span>
+            <span className="icon-bar"></span>
+            <span className="icon-bar"></span>
+          </button>
+          <a className="navbar-brand" href="/">weather-app <i className="wi wi-day-lightning"></i></a>
         </div>
-        <div className="navbar-form navbar-right" role="search">
+        <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <LocationWidgetContainer />
         </div>
       </div>
