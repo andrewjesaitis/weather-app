@@ -26,6 +26,10 @@ module.exports = {
         loader: 'file-loader?name=/img/[name].[ext]',
         include: PATHS.app,
       },
+      { test: /\.(ico)$/,
+        loader: 'file-loader?name=/[name].[ext]',
+        include: PATHS.app,
+      },
     ],
   },
   plugins: [
