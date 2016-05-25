@@ -19,7 +19,7 @@ function Navbar() {
             <span className="icon-bar"></span>
             <span className="icon-bar"></span>
           </button>
-          <a className="navbar-brand" href="/">
+          <a className="navbar-brand" href="/weather-app">
             weather-app <i className="wi wi-day-lightning"></i>
           </a>
         </div>
