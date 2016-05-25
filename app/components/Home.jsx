@@ -1,5 +1,5 @@
-var React = require('react');
-var LocationWidgetContainer = require('../containers/LocationWidgetContainer');
+import React from 'react';
+import LocationWidgetContainer from '../containers/LocationWidgetContainer';
 
 function Home() {
   return (
@@ -12,4 +12,4 @@ function Home() {
   );
 }
 
-module.exports = Home;
+export default Home;

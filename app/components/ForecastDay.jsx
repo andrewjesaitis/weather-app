@@ -1,13 +1,12 @@
-var React = require('react');
-var PropTypes = React.PropTypes;
-var styles = require('../styles/styles');
+import React, { PropTypes } from 'react';
+import * as styles from '../styles/styles';
 
-function ForecastDay(props) {
+function ForecastDay({ containerClass, iconClass, onClick, caption }) {
   return (
-    <div className={props.containerClass} onClick={props.handleClick} style={styles.forcastDay}>
-      <div><i className={props.iconClass}></i></div>
+    <div className={containerClass} onClick={onClick} style={styles.forcastDay}>
+      <div><i className={iconClass}></i></div>
       <br />
-      <h4>{props.caption}</h4>
+      <h4>{caption}</h4>
     </div>
   );
 }
@@ -15,8 +14,8 @@ function ForecastDay(props) {
 ForecastDay.propTypes = {
   containerClass: PropTypes.string.isRequired,
   iconClass: PropTypes.string.isRequired,
-  handleClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
   caption: PropTypes.string.isRequired,
 };
 
-module.exports = ForecastDay;
+export default ForecastDay;

@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 
 function Loading() {
   return (
@@ -11,4 +11,4 @@ function Loading() {
   );
 }
 
-module.exports = Loading;
+export default Loading;

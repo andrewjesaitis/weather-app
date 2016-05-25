@@ -1,11 +1,10 @@
-var React = require('react');
-var PropTypes = React.PropTypes;
-var Loading = require('./Loading');
-var ForecastDayContainer = require('../containers/ForecastDayContainer');
-var styles = require('../styles/styles');
+import React, { PropTypes } from 'react';
+import Loading from './Loading';
+import ForecastDayContainer from '../containers/ForecastDayContainer';
+import * as styles from '../styles/styles';
 
-function Forecast(props) {
-  if (props.isLoading === true) {
+function Forecast({ isLoading, city, current, forecast }) {
+  if (isLoading === true) {
     return (
       <Loading />
     );
@@ -21,8 +20,8 @@ function Forecast(props) {
       <br />
       <div className="row" style={styles.currentIcon}>
         <ForecastDayContainer
-          city={props.city}
-          day={props.current}
+          city={city}
+          day={current}
         />
       </div>
       <br />
@@ -33,16 +32,15 @@ function Forecast(props) {
       </div>
       <br />
       <div className="row">
-        {props.forecast.map(function (day, index) {
-          return (
-            <ForecastDayContainer
-              city={props.city}
-              index={index}
-              day={day}
-              key={day.dt}
-            />
-          );
-        })}
+        {forecast.map((day, index) => (
+          <ForecastDayContainer
+            city={city}
+            index={index}
+            day={day}
+            key={day.dt}
+          />
+          )
+         )}
       </div>
     </div>
   );
@@ -55,4 +53,4 @@ Forecast.propTypes = {
   city: PropTypes.string.isRequired,
 };
 
-module.exports = Forecast;
+export default Forecast;

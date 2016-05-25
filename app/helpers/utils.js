@@ -71,14 +71,13 @@ const months = ['January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December',
 ];
 
-
-var utils = {
+const utils = {
   formatDateString(dt) {
-    var d = new Date(dt * 1000);
+    const d = new Date(dt * 1000);
     return `${days[d.getDay()]} ${months[d.getMonth()]} ${d.getDate()}`;
   },
   getWeatherIconString(code) {
-    var iconStr;
+    let iconStr;
     if (weatherCodes.hasOwnProperty(code)) {
       iconStr = weatherCodes[code];
     } else {
@@ -87,16 +86,16 @@ var utils = {
     return iconStr;
   },
   getWeatherIconClass(code) {
-    var iconClass = 'wi fa-5x ';
+    let iconClass = 'wi fa-5x ';
     iconClass += this.getWeatherIconString(code);
     return iconClass;
   },
   formatUTCTime(s) {
-    var d = new Date(s * 1000);
+    const d = new Date(s * 1000);
     return d.toLocaleTimeString('en-US');
   },
   normalizeCurrentData(raw) {
-    var processed = {
+    const processed = {
       dt: raw.dt,
       weatherCode: raw.weather[0].id,
       weatherDescription: raw.weather[0].description,
@@ -110,8 +109,8 @@ var utils = {
     return processed;
   },
   normalizeForecastData(raw) {
-    var processed = raw.list.map(function(item) {
-      return {
+    const processed = raw.list.map((item) => (
+      {
         dt: item.dt,
         weatherCode: item.weather[0].id,
         weatherDescription: item.weather[0].description,
@@ -119,10 +118,10 @@ var utils = {
         humidity: item.humidity,
         pressure: item.pressure,
         wind: item.wind,
-      };
-    });
+      }
+    ));
     return processed;
   },
 };
 
-module.exports = utils;
+export default utils;

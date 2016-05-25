@@ -1,16 +1,15 @@
-var React = require('react');
-var PropTypes = React.PropTypes;
+import React, { PropTypes } from 'react';
 
-function LocationWidget(props) {
+function LocationWidget({ location, onSubmitLocation, onUpdateLocation }) {
   return (
-    <form className="navbar-form" onSubmit={props.onSubmitLocation} role="search">
+    <form className="navbar-form" onSubmit={onSubmitLocation} role="search">
       <div className="form-group">
         <input
           type="text"
           className="form-control"
-          placeholder="Location"
-          value={props.location}
-          onChange={props.onUpdateLocation}
+          placeholder="Locattion"
+          value={location}
+          onChange={onUpdateLocation}
         />
       </div>
       <button type="submit" className="btn btn-default">Submit</button>
@@ -24,4 +23,4 @@ LocationWidget.propTypes = {
   onSubmitLocation: PropTypes.func.isRequired,
 };
 
-module.exports = LocationWidget;
+export default LocationWidget;

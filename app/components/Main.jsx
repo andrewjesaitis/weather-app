@@ -1,19 +1,6 @@
-var React = require('react');
-var styles = require('../styles/styles');
-var LocationWidgetContainer = require('../containers/LocationWidgetContainer');
-
-function Main(props) {
-  return (
-    <div className="main-container" style={styles.mainComponent}>
-      <Navbar />
-      {props.children}
-    </div>
-  );
-}
-
-Main.propTypes = {
-  children: React.PropTypes.element.isRequired,
-};
+import React from 'react';
+import * as styles from '../styles/styles';
+import LocationWidgetContainer from '../containers/LocationWidgetContainer';
 
 function Navbar() {
   return (
@@ -44,5 +31,17 @@ function Navbar() {
   );
 }
 
-module.exports = Main;
+function Main({ children }) {
+  return (
+    <div className="main-container" style={styles.mainComponent}>
+      <Navbar />
+      {children}
+    </div>
+  );
+}
 
+Main.propTypes = {
+  children: React.PropTypes.element.isRequired,
+};
+
+export default Main;

@@ -1,27 +1,24 @@
-var React = require('react');
-var LocationWidget = require('../components/LocationWidget');
+import React, { Component } from 'react';
+import LocationWidget from '../components/LocationWidget';
 
-var LocationWidgetContainer = React.createClass({
-  contextTypes: {
-    router: React.PropTypes.object.isRequired,
-  },
-  getInitialState() {
-    return {
+class LocationWidgetContainer extends Component {
+  constructor() {
+    super();
+    this.state = {
       location: '',
     };
-  },
-  componentDidMount() {
-    return null;
-  },
+    this.handleSubmitLocation = this.handleSubmitLocation.bind(this);
+    this.handleUpdateLocation = this.handleUpdateLocation.bind(this);
+  }
   handleSubmitLocation(e) {
     e.preventDefault();
     this.context.router.push(`/forecast/${this.state.location}`);
-  },
+  }
   handleUpdateLocation(e) {
     this.setState({
       location: e.target.value,
     });
-  },
+  }
   render() {
     return (
       <LocationWidget
@@ -30,7 +27,11 @@ var LocationWidgetContainer = React.createClass({
         location={this.state.location}
       />
     );
-  },
-});
+  }
+}
 
-module.exports = LocationWidgetContainer;
+LocationWidgetContainer.contextTypes = {
+  router: React.PropTypes.object.isRequired,
+};
+
+export default LocationWidgetContainer;
