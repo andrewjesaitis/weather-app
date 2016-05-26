@@ -4,7 +4,7 @@
 
 ### Description
 
-Weather-app is a little react.js app that show the weather forecast for a specified location.
+[Weather-app](http://andrewjesaitis.com/weather-app) is a little react.js app that show the weather forecast for a specified location.
 
 ### Installation
 
