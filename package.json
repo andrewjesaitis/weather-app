@@ -36,7 +36,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --content-base=www --inline --watch --hot",
-    "production": "webpack -p",
+    "production": "NODE_ENV=production webpack -p",
     "deploy": "npm run production && git-directory-deploy --directory dist/"
   },
   "author": "Andrew Jesaitis",
