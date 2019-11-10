@@ -7,7 +7,7 @@ function LocationWidget({ location, onSubmitLocation, onUpdateLocation }) {
         <input
           type="text"
           className="form-control"
-          placeholder="Locattion"
+          placeholder="Location"
           value={location}
           onChange={onUpdateLocation}
         />
